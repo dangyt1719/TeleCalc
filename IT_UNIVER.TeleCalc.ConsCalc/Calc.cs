@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace IT_UNIVER.TeleCalc.ConsCalc
 {
-    class Program
+    public class Calc
     {
-        static void Main(string[] args)
+        public int Sum(int x, int y)
         {
-
+            return x+y;
         }
     }
 }
