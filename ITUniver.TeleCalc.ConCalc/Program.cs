@@ -19,8 +19,9 @@ namespace ITUniver.TeleCalc.ConCalc
             Console.WriteLine("Пожалуйста, введите первое число");
 
             double x = Convert.ToDouble(Console.ReadLine());
-            double y = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Пожалуйста, введите второе число");
+            double y = Convert.ToDouble(Console.ReadLine());
+            
 #region bla
             /*  if (args.Length != 3)
               {
