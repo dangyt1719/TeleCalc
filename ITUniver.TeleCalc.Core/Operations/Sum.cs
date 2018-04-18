@@ -2,8 +2,8 @@
 {
     public class Sum : IOperation
     {
+        
         public string Name => "Sum";
-        IOperation operation = .FirstOrDefault(o => o.Name == operName);
         public double[] Args {
             set
             {
@@ -20,5 +20,6 @@
         public string Error { get; }
 
         public double? Result { get; private set; }
+       
     }
 }
