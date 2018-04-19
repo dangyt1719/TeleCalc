@@ -45,8 +45,42 @@ namespace ITUniver.TeleCalc.Core
             operations = opers.ToArray();
           
         }
+        public dynamic  Find()
+        {
+            
+          var opers = new List<IOperation>();
 
-        public double Exec(string operName, double x, double y)
+            // получить текущую сборку
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // получить все типы в ней
+            var classes = assembly.GetTypes();
+
+            foreach (var item in classes)
+            {
+                // получаем интерфейсы, которые реализует класс
+                var interfaces = item.GetInterfaces();
+
+                // если хотя бы один из интерфейсов имеет заданное имя
+
+                var isOperation = interfaces.Any(i => i == typeof(IOperation));
+
+                if (isOperation)
+                {
+                    Console.WriteLine($"Operatrion {item.Name}");
+                    var obj = Activator.CreateInstance(item) as IOperation;
+                    if (obj != null)
+                    {
+
+                        opers.Add(obj);
+                    }
+                }
+            }
+
+           return operations = opers.ToArray();
+
+        }
+        public double Exec(string operName, double? x, double? y)
         {
             IOperation operation = operations
                 .FirstOrDefault(o => o.Name == operName);
@@ -54,7 +88,7 @@ namespace ITUniver.TeleCalc.Core
             if (operation == null)
                 return double.NaN;
 
-            operation.Args = new double[] { x, y };
+            operation.Args = new double[] { Convert.ToDouble(x), Convert.ToDouble(y) };
             return (double)operation.Result;
         }
 

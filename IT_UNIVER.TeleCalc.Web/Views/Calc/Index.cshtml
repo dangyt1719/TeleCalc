@@ -1,0 +1,40 @@
+﻿
+@{
+
+
+        ViewBag.Title = "Index";
+        var x = ViewBag.X1;
+        var y = ViewBag.Y1;
+        // var result = x + y;
+        var result = ViewBag.E;
+        var operName = ViewBag.OperName;
+        var C = ViewBag.CalcC;
+        var sign1 = ViewBag.Sign;
+        
+        
+
+
+
+}
+
+<h2>Index</h2>
+<div>
+    
+    @if (sign1)
+    {
+        <h4>Выберите один из перечисленных операций</h4>
+        foreach (var it in @C)
+        {
+        <p>@it</p>
+        }
+    }
+    @if (@x == null && @y == null && @operName == null)
+    {
+        <h4>Введите операцию и два числа</h4>
+    }
+   
+    {
+   <b>@operName</b>(@x, @y) = @(result);
+    }
+
+</div>
